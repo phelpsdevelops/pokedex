@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View, StyleSheet, Pressable } from "react-native";
 
 
+
 interface Pokemon{
   name:string;
   image: string;
@@ -16,12 +17,12 @@ interface PokemonType{
   }
 }
 
-const colorsByType={
-  grass:"green",
-  fire:"orange",
-  water:"blue",
-  bug:"green"
-}
+const colorsByType = {
+  grass: "#78C850",   // classic Pokémon grass green
+  fire: "#F08030",    // warm fire orange
+  water: "#6890F0",   // Pokémon-style water blue
+  bug: "#A8B820",     // olive/lime bug color
+};
 export default function Index() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
     
@@ -69,10 +70,11 @@ export default function Index() {
       {pokemons.map((pokemon)=>(
      <Link 
      key={pokemon.name} 
+     
      href={ {pathname:"/details", params:{name: pokemon.name}}}>
         <View style={{
           //@ts-ignore
-          backgroundColor:colorsByType[pokemon.types[0].type.name],
+          backgroundColor:colorsByType[pokemon.types[0].type.name] +50,
           padding:20,
           borderRadius:20,
           }}>
@@ -80,7 +82,7 @@ export default function Index() {
             <Text style={styles.type}>{pokemon.types[0].type.name}</Text>
 
             <View style={{
-              flexDirection: "row"
+              flexDirection: "row-reverse"
             }}>
 
               <Image source = {{uri: pokemon.image}}
