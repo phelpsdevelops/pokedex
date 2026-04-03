@@ -1,5 +1,5 @@
 
-import { useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect,useState } from "react";
 
 import { ScrollView, StyleSheet,Text } from "react-native";
@@ -35,6 +35,8 @@ const [pokemon,setPokemon]=useState<any>(null);
     }
   }
 return (
+  <>
+  <Stack.Screen options={{title: name}}/>
     <ScrollView
     contentContainerStyle={{
         gap:16,
@@ -48,6 +50,8 @@ return (
 
      
     </ScrollView>
+    </>
+    
   );
 }
 
